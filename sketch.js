@@ -2,9 +2,14 @@ let diceArr;
 let gridSize = 4;
 
 let types = [];
+
+let canvasSize = 540;
+
 function setup() {
 
-    createCanvas(540, 540);
+    if (windowWidth < 540) canvasSize = windowWidth
+
+    createCanvas(canvasSize, canvasSize);
 
     angleMode(DEGREES);
     textFont("Noto Emoji");

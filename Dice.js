@@ -4,7 +4,7 @@ class Dice {
 
         this.x = x;
         this.y = y;
-        this.size = 95;
+        this.size = width/4.5;
         this.side = int(random(6));
         this.rotation = random([0, 90, 180, 270]);
         this.type = type;
