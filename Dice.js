@@ -53,7 +53,7 @@ class Dice {
         fill("#111");
 
         for (let i = 0; i < 4; i++) {
-            text("🔑", 0, this.size*.95*.41);
+            text("🔒", 0, this.size*.95*.41);
             rotate(90);
         }
 
