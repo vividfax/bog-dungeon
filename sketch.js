@@ -25,6 +25,8 @@ function setup() {
             diceArr[i][j] = new Dice(i, j, types.pop());
         }
     }
+
+    noLoop();
 }
 
 function draw() {
@@ -41,10 +43,13 @@ function draw() {
 
 function mousePressed() {
 
-    for (let i = 0; i < gridSize; i++) {
-        for (let j = 0; j < gridSize; j++) {
+    // for (let i = 0; i < gridSize; i++) {
+    //     for (let j = 0; j < gridSize; j++) {
 
-            diceArr[i][j].click(mouseX, mouseY);
-        }
-    }
+    //         diceArr[i][j].click(mouseX, mouseY);
+    //     }
+    // }
+
+    fill(255, 255, 255, 200);
+    ellipse(mouseX, mouseY, 30);
 }
