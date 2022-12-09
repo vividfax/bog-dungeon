@@ -15,6 +15,27 @@ let specialKeySpan;
 
 let markers = [];
 
+let flagImage;
+let skullImage;
+let foodImage;
+let keyImage;
+let rerollImage;
+let specialKeyImage;
+let chestImage;
+let lockImage;
+
+function preload() {
+
+    flagImage = loadImage("./images/flag.png");
+    skullImage = loadImage("./images/skull.png");
+    foodImage = loadImage("./images/food.png");
+    keyImage = loadImage("./images/key.png");
+    rerollImage = loadImage("./images/reroll.png");
+    specialKeyImage = loadImage("./images/specialKey.png");
+    chestImage = loadImage("./images/chest.png");
+    lockImage = loadImage("./images/lock.png");
+}
+
 function setup() {
 
     if (windowWidth < 375) canvasSize = windowWidth
@@ -22,32 +43,14 @@ function setup() {
     createCanvas(canvasSize, canvasSize);
 
     angleMode(DEGREES);
-    textFont("Noto Emoji");
-    textAlign(CENTER, CENTER)
-
-    diceArr = [...Array(gridSize)].map(e => Array(gridSize));
-    heartCount
-    types = types.concat(["🔑", "🔑", "🔑", "🔑"]);
-    types = types.concat(["💀", "💀", "💀", "💀", "💀"]);
-    types = types.concat(["🍖", "🍖", "🍖"]);
-    types = types.concat(["🔃"]);
-    types = types.concat(["🗝️"]);
-    types = types.concat(["🧰"]);
-    types = types.concat(["🚩"]);
-    types = shuffle(types);
-
-    for (let i = 0; i < gridSize; i++) {
-        for (let j = 0; j < gridSize; j++) {
-
-            diceArr[i][j] = new Dice(i, j, types.pop());
-        }
-    }
-
-    noLoop();
+    textAlign(CENTER, CENTER);
+    imageMode(CENTER);
 
     setupButtons();
-
     canvas.addEventListener('contextmenu', event => event.preventDefault());
+
+    restart();
+    noLoop();
 }
 
 function draw() {
@@ -77,8 +80,6 @@ function mousePressed() {
         for (let i = markers.length-1; i >= 0; i--) {
 
             if (markers[i].clicked(mouseX, mouseY)) {
-
-                console.log('hi')
                 markers.splice(i, 1);
             }
         }
@@ -108,6 +109,8 @@ function setupButtons() {
     select("#plusKey").mouseReleased(addKey);
     select("#minusSpecialKey").mouseReleased(subtractSpecialKey);
     select("#plusSpecialKey").mouseReleased(addSpecialKey);
+
+    select("#restart").mouseReleased(restart);
 }
 
 function subtractHeart() {
@@ -144,4 +147,37 @@ function addSpecialKey() {
 
     specialKeyCount++;
     specialKeySpan.html(specialKeyCount);
+}
+
+function restart() {
+
+    heartCount = 1;
+    keyCount = 1;
+    specialKeyCount = 0;
+
+    heartSpan.html(heartCount);
+    keySpan.html(keyCount);
+    specialKeySpan.html(specialKeyCount);
+
+    diceArr = [...Array(gridSize)].map(e => Array(gridSize));
+    heartCount
+    types = types.concat(["🚩"]);
+    types = types.concat(["💀", "💀", "💀", "💀", "💀"]);
+    types = types.concat(["🍖", "🍖"]);
+    types = types.concat(["🔑", "🔑", "🔑", "🔑", "🔑"]);
+    types = types.concat(["🔃"]);
+    types = types.concat(["🗝️"]);
+    types = types.concat(["🧰"]);
+    types = shuffle(types);
+
+    for (let i = 0; i < gridSize; i++) {
+        for (let j = 0; j < gridSize; j++) {
+
+            diceArr[i][j] = new Dice(i, j, types.pop());
+        }
+    }
+
+    markers = [];
+
+    draw();
 }

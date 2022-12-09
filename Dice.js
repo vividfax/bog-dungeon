@@ -10,7 +10,7 @@ class Dice {
         this.type = type;
 
         this.clicked = true;
-        this.backgroundColour = "#fefefe";
+        this.backgroundColour = "#ccc";
     }
 
     display() {
@@ -31,12 +31,24 @@ class Dice {
 
         this.displaySide();
 
-        if (this.type == "🚩" || this.type == "🗝️" || this.type == "🧰") {
-            textFont("monospace")
-        }
+        // if (this.type == "🚩" || this.type == "🗝️" || this.type == "🧰") {
+        //     textFont("monospace")
+        // }
 
-        textSize(this.size*.2);
-        text(this.type, 0, 0);
+        // textSize(this.size*.2);
+        // text(this.type, 0, 0);
+
+        let img = keyImage;
+
+        if (this.type == "🚩") img = flagImage;
+        else if (this.type == "💀") img = skullImage;
+        else if (this.type == "🍖") img = foodImage;
+        else if (this.type == "🔑") img = keyImage;
+        else if (this.type == "🔃") img = rerollImage;
+        else if (this.type == "🗝️") img = specialKeyImage;
+        else if (this.type == "🧰") img = chestImage;
+
+        image(img, 0, 0, this.size*.4, this.size*.4)
 
         pop();
 
@@ -55,44 +67,44 @@ class Dice {
 
         push();
 
-        fill("#111");
+        fill("#000");
 
         for (let i = 0; i < 4; i++) {
-            text("🔒", 0, this.size*.95*.41);
+            // text("🔒", 0, this.size*.95*.41);
+
+            image(lockImage, 0, this.size*.95*.41, this.size*.1, this.size*.1)
             rotate(90);
         }
 
         pop();
 
-        fill("#555");
+        fill("#fff");
+        stroke("#000");
 
         if (this.side == 0) {
+            rect(this.size*.95/4, 0, this.size*.95/1.95, this.size*.2);
             rect(0, 0, this.size*.6, this.size*.6, 4);
-            rect(this.size*.95/4, 0, this.size*.95/2, this.size*.2);
         } else if (this.side == 1) {
+            rect(this.size*.95/4, 0, this.size*.95/1.95, this.size*.2);
+            rect(-this.size*.95/4, 0, this.size*.95/1.95, this.size*.2);
             rect(0, 0, this.size*.6, this.size*.6, 4);
-            rect(this.size*.95/4, 0, this.size*.95/2, this.size*.2);
-            rect(-this.size*.95/4, 0, this.size*.95/2, this.size*.2);
         } else if (this.side == 2) {
+            rect(this.size*.95/4, 0, this.size*.95/1.95, this.size*.2);
+            rect(-this.size*.95/4, 0, this.size*.95/1.95, this.size*.2);
+            rect(0, -this.size*.95/4, this.size*.2, this.size*.95/1.95);
             rect(0, 0, this.size*.6, this.size*.6, 4);
-            rect(this.size*.95/4, 0, this.size*.95/2, this.size*.2);
-            rect(-this.size*.95/4, 0, this.size*.95/2, this.size*.2);
-            rect(0, -this.size*.95/4, this.size*.2, this.size*.95/2);
         } else if (this.side == 3) {
+            rect(this.size*.95/4, 0, this.size*.95/1.95, this.size*.2);
+            rect(0, -this.size*.95/4, this.size*.2, this.size*.95/1.95);
             rect(0, 0, this.size*.6, this.size*.6, 4);
-            rect(this.size*.95/4, 0, this.size*.95/2, this.size*.2);
-            rect(0, -this.size*.95/4, this.size*.2, this.size*.95/2);
         } else if (this.side == 4) {
+            rect(this.size*.95/4, 0, this.size*.95/1.95, this.size*.2);
+            rect(-this.size*.95/4, 0, this.size*.95/1.95, this.size*.2);
+            rect(0, -this.size*.95/4, this.size*.2, this.size*.95/1.95);
+            rect(0, this.size*.95/4, this.size*.2, this.size*.95/1.95);
             rect(0, 0, this.size*.6, this.size*.6, 4);
-            rect(this.size*.95/4, 0, this.size*.95/2, this.size*.2);
-            rect(-this.size*.95/4, 0, this.size*.95/2, this.size*.2);
-            rect(0, -this.size*.95/4, this.size*.2, this.size*.95/2);
-            rect(0, this.size*.95/4, this.size*.2, this.size*.95/2);
         } else if (this.side == 5) {
             rect(0, 0, this.size*.6, this.size*.6, 4);
-            rect(this.size*.95/4, 0, this.size*.95/2, this.size*.2);
-            rect(-this.size*.95/4, 0, this.size*.95/2, this.size*.2);
-            rect(0, -this.size*.95/4, this.size*.2, this.size*.95/2);
         }
 
         pop();
