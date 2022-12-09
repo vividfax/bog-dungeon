@@ -90,11 +90,9 @@ class Dice {
             rect(0, this.size*.95/4, this.size*.2, this.size*.95/2);
         } else if (this.side == 5) {
             rect(0, 0, this.size*.6, this.size*.6, 4);
-            // ellipse(0, 0, this.size*.7);
-            // rect(this.size*.95/4, 0, this.size*.95/2, this.size*.2);
-            // rect(-this.size*.95/4, 0, this.size*.95/2, this.size*.2);
-            // rect(0, -this.size*.95/4, this.size*.2, this.size*.95/2);
-            // rect(0, this.size*.95/4, this.size*.2, this.size*.95/2);
+            rect(this.size*.95/4, 0, this.size*.95/2, this.size*.2);
+            rect(-this.size*.95/4, 0, this.size*.95/2, this.size*.2);
+            rect(0, -this.size*.95/4, this.size*.2, this.size*.95/2);
         }
 
         pop();
@@ -117,7 +115,6 @@ class Dice {
 
             this.side = int(random(6));
             this.rotation = random([0, 90, 180, 270]);
-            this.display();
         }
     }
 }

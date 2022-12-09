@@ -3,19 +3,21 @@ let gridSize = 4;
 
 let types = [];
 
-let canvasSize = 540;
+let canvasSize = 375;
 
 let heartCount = 1;
-let keyCount = 2;
+let keyCount = 1;
 let specialKeyCount = 0;
 
 let heartSpan;
 let keySpan;
 let specialKeySpan;
 
+let markers = [];
+
 function setup() {
 
-    if (windowWidth < 540) canvasSize = windowWidth
+    if (windowWidth < 375) canvasSize = windowWidth
 
     createCanvas(canvasSize, canvasSize);
 
@@ -44,6 +46,8 @@ function setup() {
     noLoop();
 
     setupButtons();
+
+    canvas.addEventListener('contextmenu', event => event.preventDefault());
 }
 
 function draw() {
@@ -56,13 +60,28 @@ function draw() {
             diceArr[i][j].display();
         }
     }
+
+    for (let i = 0; i < markers.length; i++) {
+        markers[i].display();
+    }
 }
 
 function mousePressed() {
 
     if (mouseButton == LEFT)  {
-        fill(255, 255, 255, 200);
-        ellipse(mouseX, mouseY, 30);
+
+        markers.push(new Marker(mouseX, mouseY));
+
+    } else if (mouseButton == RIGHT) {
+
+        for (let i = markers.length-1; i >= 0; i--) {
+
+            if (markers[i].clicked(mouseX, mouseY)) {
+
+                console.log('hi')
+                markers.splice(i, 1);
+            }
+        }
 
     } else if (mouseButton == CENTER) {
 
@@ -73,6 +92,8 @@ function mousePressed() {
             }
         }
     }
+
+    draw();
 }
 
 function setupButtons() {

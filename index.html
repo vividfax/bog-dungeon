@@ -16,6 +16,7 @@
 
     <script src="sketch.js"></script>
     <script src="Dice.js"></script>
+    <script src="Marker.js"></script>
 
     <style>
         body {
@@ -41,10 +42,18 @@
         }
 
         #stats {
-            top: 30px;
+            top: 10px;
             position: absolute;
             left: 50%;
             transform: translate(-60px, 0);
+        }
+
+        #instructions {
+            bottom: 10px;
+            position: absolute;
+            left: 50%;
+            transform: translate(-175px, 0);
+            width: 360px
         }
 
         button {
@@ -71,24 +80,33 @@
 
     <div id="stats">
         <div>
-            <button id="minusHeart">-</button>
-            <span id="numberOfHearts">1</span>🤍
-            <button id="plusHeart">+</button>
+            <p>
+                <button id="minusHeart">-</button>
+                <span id="numberOfHearts">1</span>🤍
+                <button id="plusHeart">+</button>
+            </p>
         </div>
-        <br>
         <div>
-            <button id="minusKey">-</button>
-            <span id="numberOfKeys">2</span>🔑
-            <button id="plusKey">+</button>
+            <p>
+                <button id="minusKey">-</button>
+                <span id="numberOfKeys">1</span>🔑
+                <button id="plusKey">+</button>
+            </p>
         </div>
-        <br>
         <div>
-            <button id="minusSpecialKey">-</button>
-            <span id="numberOfSpecialKeys">0</span>🗝️
-            <button id="plusSpecialKey">+</button>
+            <p>
+                <button id="minusSpecialKey">-</button>
+                <span id="numberOfSpecialKeys">0</span>🗝️
+                <button id="plusSpecialKey">+</button>
+            </p>
         </div>
     </div>
 
+    <div id="instructions">
+        <p>Right click to place marker</p>
+        <p>Left click a marker to remove it</p>
+        <p>Middle click a dice to reroll it</p>
+    </div>
 
 </body>
 
