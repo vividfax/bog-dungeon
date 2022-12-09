@@ -30,6 +30,11 @@ class Dice {
         rotate(this.rotation);
 
         this.displaySide();
+
+        if (this.type == "🚩" || this.type == "🗝️" || this.type == "🧰") {
+            textFont("monospace")
+        }
+
         textSize(this.size*.2);
         text(this.type, 0, 0);
 
@@ -101,5 +106,18 @@ class Dice {
         let b = height/2 -(gridSize-1)/2*this.size + this.y*this.size;
 
         if (dist(x, y, a, b) < this.size/2) this.backgroundColour = "#aaa";
+    }
+
+    reroll(x, y) {
+
+        let a = width/2 -(gridSize-1)/2*this.size + this.x*this.size;
+        let b = height/2 -(gridSize-1)/2*this.size + this.y*this.size;
+
+        if (dist(x, y, a, b) < this.size/2) {
+
+            this.side = int(random(6));
+            this.rotation = random([0, 90, 180, 270]);
+            this.display();
+        }
     }
 }

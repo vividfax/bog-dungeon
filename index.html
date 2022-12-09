@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>bog dungeon</title>
+    <title>bog</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +24,7 @@
             overflow: hidden;
             font-family: "Noto Emoji", monospace;
             background-color: #0a0a0a;
+            color: #fff;
         }
 
         canvas {
@@ -38,10 +39,55 @@
             font-family: "Noto Emoji";
             src: url("./fonts/NotoEmoji-Regular.ttf");
         }
+
+        #stats {
+            top: 30px;
+            position: absolute;
+            left: 50%;
+            transform: translate(-60px, 0);
+        }
+
+        button {
+            font-family: "Noto Emoji", serif;
+            border-radius: 5px;
+            border-style: none;
+            font-size: large;
+            color: #fff;
+            background-color: #0a0a0a;
+            border-style: solid;
+            border-color: #fff;
+            user-select: none;
+            -moz-user-select: none;
+        }
+
+        button:hover {
+            color: #fff;
+            background-color: #888;
+        }
     </style>
 </head>
 
 <body>
+
+    <div id="stats">
+        <div>
+            <button id="minusHeart">-</button>
+            <span id="numberOfHearts">1</span>🤍
+            <button id="plusHeart">+</button>
+        </div>
+        <br>
+        <div>
+            <button id="minusKey">-</button>
+            <span id="numberOfKeys">2</span>🔑
+            <button id="plusKey">+</button>
+        </div>
+        <br>
+        <div>
+            <button id="minusSpecialKey">-</button>
+            <span id="numberOfSpecialKeys">0</span>🗝️
+            <button id="plusSpecialKey">+</button>
+        </div>
+    </div>
 
 
 </body>
