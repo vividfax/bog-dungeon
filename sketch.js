@@ -5,7 +5,7 @@ let types = [];
 
 let canvasSize = 375;
 
-let heartCount = 1;
+let heartCount = 2;
 let keyCount = 1;
 let specialKeyCount = 0;
 
@@ -151,7 +151,7 @@ function addSpecialKey() {
 
 function restart() {
 
-    heartCount = 1;
+    heartCount = 2;
     keyCount = 1;
     specialKeyCount = 0;
 
