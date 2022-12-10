@@ -23,8 +23,10 @@ class Dice {
         translate(this.x*this.size, this.y*this.size);
 
         noStroke();
-        fill(this.backgroundColour);
+        fill("#D8D8D8")
         rect(0, 0, this.size*.95, this.size*.95, this.size*.1);
+        fill("#E8E8E8");
+        ellipse(0, 0, this.size*.95);
 
         push();
         rotate(this.rotation);
