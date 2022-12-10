@@ -40,7 +40,7 @@ function setup() {
 
     if (windowWidth < 375) canvasSize = windowWidth
 
-    createCanvas(canvasSize, canvasSize);
+    createCanvas(canvasSize, canvasSize).parent("sketchHolder");
 
     angleMode(DEGREES);
     textAlign(CENTER, CENTER);

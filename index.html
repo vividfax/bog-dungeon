@@ -22,37 +22,45 @@
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
             font-family: "Fira Code", monospace;
             background-color: #0a0a0a;
             color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        canvas {
-            margin: auto;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+        @media screen and (max-height: 733px) {
+            body {
+                align-items: flex-start;
+            }
+        }
+
+        #container {
+            width: 375px;
+            /* height: 733px; */
+            align-items: center;
+        }
+
+
+        #statsContainer {
+            display: flex;
+            justify-content: center;
         }
 
         #stats {
-            top: 20px;
-            position: absolute;
-            left: 50%;
-            transform: translate(-70px, 0);
+            width: 172px;
             background: #fff;
             color: #000;
-            padding: 0 20px 0 20px;
+            padding: 5px 20px;
+            margin: 20px;
             border-radius: 4px;
+            text-align: center;
         }
 
         #instructions {
-            bottom: 10px;
-            position: absolute;
-            left: 50%;
-            transform: translate(-175px, 0);
-            width: 360px
+            text-align: center;
         }
 
         button {
@@ -66,6 +74,7 @@
             border-color: #000;
             user-select: none;
             -moz-user-select: none;
+            padding: 0 10px;
         }
 
         button:hover {
@@ -74,7 +83,8 @@
         }
 
         img {
-            width: 16px;
+            width: 18px;
+            vertical-align: text-top;
         }
 
         #restart {
@@ -86,39 +96,43 @@
 
 <body>
 
-    <div id="stats">
-        <div>
-            <p>
-                <button id="restart">Restart</button>
-            </p>
+    <div id="container">
+        <div id="statsContainer">
+            <div id="stats">
+                <div>
+                    <p>
+                        <button id="restart">New game</button>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <button id="minusHeart">-</button>
+                        <span id="numberOfHearts">1</span> <img src="./images/heart.png">
+                        <button id="plusHeart">+</button>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <button id="minusKey">-</button>
+                        <span id="numberOfKeys">1</span> <img src="./images/key.png">
+                        <button id="plusKey">+</button>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <button id="minusSpecialKey">-</button>
+                        <span id="numberOfSpecialKeys">0</span> <img src="./images/specialKey.png">
+                        <button id="plusSpecialKey">+</button>
+                    </p>
+                </div>
+            </div>
         </div>
-        <div>
-            <p>
-                <button id="minusHeart">-</button>
-                <span id="numberOfHearts">1</span> <img src="./images/heart.png">
-                <button id="plusHeart">+</button>
-            </p>
+        <div id="sketchHolder"></div>
+        <div id="instructions">
+            <p>Right click to place marker</p>
+            <p>Left click a marker to remove it</p>
+            <p>Middle click a dice to reroll it</p>
         </div>
-        <div>
-            <p>
-                <button id="minusKey">-</button>
-                <span id="numberOfKeys">1</span> <img src="./images/key.png">
-                <button id="plusKey">+</button>
-            </p>
-        </div>
-        <div>
-            <p>
-                <button id="minusSpecialKey">-</button>
-                <span id="numberOfSpecialKeys">0</span> <img src="./images/specialKey.png">
-                <button id="plusSpecialKey">+</button>
-            </p>
-        </div>
-    </div>
-
-    <div id="instructions">
-        <p>Right click to place marker</p>
-        <p>Left click a marker to remove it</p>
-        <p>Middle click a dice to reroll it</p>
     </div>
 
 </body>
