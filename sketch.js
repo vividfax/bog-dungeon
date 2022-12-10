@@ -24,7 +24,9 @@ let specialKeyImage;
 let chestImage;
 let lockImage;
 
+let timeClicked = 0;
 let timePressed = 0;
+let isTouching;
 
 function preload() {
 
@@ -57,8 +59,21 @@ function setup() {
 
 function draw() {
 
-    if (mouseIsPressed) timePressed++;
+    if (mouseIsPressed) timeClicked++;
+    else timeClicked = 0;
+
+    if (isTouching) timePressed++;
     else timePressed = 0;
+}
+
+function touchStarted() {
+
+    isTouching = true;
+}
+
+function touchEnded() {
+
+    isTouching = false;
 }
 
 function display() {
@@ -80,7 +95,7 @@ function display() {
 
 function mouseReleased() {
 
-    if (timePressed >= 25) {
+    if (timePressed >= 25 || timeClicked >= 25) {
 
         for (let i = 0; i < gridSize; i++) {
             for (let j = 0; j < gridSize; j++) {
