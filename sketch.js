@@ -24,6 +24,8 @@ let specialKeyImage;
 let chestImage;
 let lockImage;
 
+let timePressed = 0;
+
 function preload() {
 
     flagImage = loadImage("./images/flag.png");
@@ -51,10 +53,17 @@ function setup() {
     document.addEventListener("gesturestart", event => event.preventDefault());
 
     restart();
-    noLoop();
 }
 
 function draw() {
+
+    if (mouseIsPressed) timePressed++;
+    else timePressed = 0;
+
+    console.log(timePressed);
+}
+
+function display() {
 
     background("#0a0a0a");
 
@@ -70,21 +79,18 @@ function draw() {
     }
 }
 
-function doubleClicked() {
 
-    for (let i = 0; i < gridSize; i++) {
-        for (let j = 0; j < gridSize; j++) {
+function mouseReleased() {
 
-            diceArr[i][j].reroll(mouseX, mouseY);
+    if (timePressed >= 25) {
+
+        for (let i = 0; i < gridSize; i++) {
+            for (let j = 0; j < gridSize; j++) {
+
+                diceArr[i][j].reroll(mouseX, mouseY);
+            }
         }
-    }
-
-    draw();
-}
-
-function mousePressed() {
-
-    if (mouseButton == LEFT)  {
+    } else {
 
         let markerClicked = false;
 
@@ -98,10 +104,9 @@ function mousePressed() {
         }
 
         if (!markerClicked) markers.push(new Marker(mouseX, mouseY));
-
     }
 
-    draw();
+    display();
 }
 
 function setupButtons() {
@@ -186,5 +191,5 @@ function restart() {
 
     markers = [];
 
-    draw();
+    display();
 }
