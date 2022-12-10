@@ -66,41 +66,41 @@ function draw() {
     else timePressed = 0;
 }
 
-function touchStarted() {
+// function touchStarted() {
 
-    isTouching = true;
-}
+//     isTouching = true;
+// }
 
-function touchEnded() {
+// function touchEnded() {
 
-    isTouching = false;
+//     isTouching = false;
 
-    if (timePressed >= 25 || timeClicked >= 25) {
+//     if (timePressed >= 25 || timeClicked >= 25) {
 
-        for (let i = 0; i < gridSize; i++) {
-            for (let j = 0; j < gridSize; j++) {
+//         for (let i = 0; i < gridSize; i++) {
+//             for (let j = 0; j < gridSize; j++) {
 
-                diceArr[i][j].reroll(mouseX, mouseY);
-            }
-        }
-    } else {
+//                 diceArr[i][j].reroll(mouseX, mouseY);
+//             }
+//         }
+//     } else {
 
-        let markerClicked = false;
+//         let markerClicked = false;
 
-        for (let i = markers.length-1; i >= 0; i--) {
+//         for (let i = markers.length-1; i >= 0; i--) {
 
-            if (markers[i].clicked(mouseX, mouseY)) {
-                markers.splice(i, 1);
-                markerClicked = true;
-                break;
-            }
-        }
+//             if (markers[i].clicked(mouseX, mouseY)) {
+//                 markers.splice(i, 1);
+//                 markerClicked = true;
+//                 break;
+//             }
+//         }
 
-        if (!markerClicked) markers.push(new Marker(mouseX, mouseY));
-    }
+//         if (!markerClicked) markers.push(new Marker(mouseX, mouseY));
+//     }
 
-    display();
-}
+//     display();
+// }
 
 function display() {
 
