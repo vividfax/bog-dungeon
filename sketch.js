@@ -59,8 +59,6 @@ function draw() {
 
     if (mouseIsPressed) timePressed++;
     else timePressed = 0;
-
-    console.log(timePressed);
 }
 
 function display() {
