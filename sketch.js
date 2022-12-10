@@ -48,6 +48,7 @@ function setup() {
 
     setupButtons();
     canvas.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener("gesturestart", event => event.preventDefault());
 
     restart();
     noLoop();
