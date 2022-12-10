@@ -5,9 +5,9 @@ let types = [];
 
 let canvasSize = 375;
 
-let heartCount = 2;
-let keyCount = 1;
-let specialKeyCount = 0;
+let heartCount;
+let keyCount;
+let specialKeyCount;
 
 let heartSpan;
 let keySpan;
@@ -152,7 +152,7 @@ function addSpecialKey() {
 function restart() {
 
     heartCount = 2;
-    keyCount = 1;
+    keyCount = 2;
     specialKeyCount = 0;
 
     heartSpan.html(heartCount);
@@ -162,9 +162,9 @@ function restart() {
     diceArr = [...Array(gridSize)].map(e => Array(gridSize));
     heartCount
     types = types.concat(["🚩"]);
-    types = types.concat(["💀", "💀", "💀", "💀", "💀"]);
+    types = types.concat(["💀", "💀", "💀", "💀", "💀", "💀"]);
     types = types.concat(["🍖", "🍖"]);
-    types = types.concat(["🔑", "🔑", "🔑", "🔑", "🔑"]);
+    types = types.concat(["🔑", "🔑", "🔑", "🔑"]);
     types = types.concat(["🔃"]);
     types = types.concat(["🗝️"]);
     types = types.concat(["🧰"]);
