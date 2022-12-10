@@ -74,6 +74,32 @@ function touchStarted() {
 function touchEnded() {
 
     isTouching = false;
+
+    if (timePressed >= 25 || timeClicked >= 25) {
+
+        for (let i = 0; i < gridSize; i++) {
+            for (let j = 0; j < gridSize; j++) {
+
+                diceArr[i][j].reroll(mouseX, mouseY);
+            }
+        }
+    } else {
+
+        let markerClicked = false;
+
+        for (let i = markers.length-1; i >= 0; i--) {
+
+            if (markers[i].clicked(mouseX, mouseY)) {
+                markers.splice(i, 1);
+                markerClicked = true;
+                break;
+            }
+        }
+
+        if (!markerClicked) markers.push(new Marker(mouseX, mouseY));
+    }
+
+    display();
 }
 
 function display() {
@@ -91,7 +117,6 @@ function display() {
         markers[i].display();
     }
 }
-
 
 function mouseReleased() {
 
