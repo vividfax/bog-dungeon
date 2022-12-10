@@ -69,29 +69,35 @@ function draw() {
     }
 }
 
+function doubleClicked() {
+
+    for (let i = 0; i < gridSize; i++) {
+        for (let j = 0; j < gridSize; j++) {
+
+            diceArr[i][j].reroll(mouseX, mouseY);
+        }
+    }
+
+    draw();
+}
+
 function mousePressed() {
 
     if (mouseButton == LEFT)  {
 
-        markers.push(new Marker(mouseX, mouseY));
-
-    } else if (mouseButton == RIGHT) {
+        let markerClicked = false;
 
         for (let i = markers.length-1; i >= 0; i--) {
 
             if (markers[i].clicked(mouseX, mouseY)) {
                 markers.splice(i, 1);
+                markerClicked = true;
+                break;
             }
         }
 
-    } else if (mouseButton == CENTER) {
+        if (!markerClicked) markers.push(new Marker(mouseX, mouseY));
 
-        for (let i = 0; i < gridSize; i++) {
-            for (let j = 0; j < gridSize; j++) {
-
-                diceArr[i][j].reroll(mouseX, mouseY);
-            }
-        }
     }
 
     draw();
