@@ -8,10 +8,12 @@ let canvasSize = 375;
 let heartCount;
 let keyCount;
 let specialKeyCount;
+let xpCount = 0;
 
 let heartSpan;
 let keySpan;
 let specialKeySpan;
+let xpSpan;
 
 let markers = [];
 
@@ -152,6 +154,7 @@ function setupButtons() {
     heartSpan = select("#numberOfHearts");
     keySpan = select("#numberOfKeys");
     specialKeySpan = select("#numberOfSpecialKeys");
+    xpSpan = select("#numberOfXp");
 
     select("#minusHeart").mouseReleased(subtractHeart);
     select("#plusHeart").mouseReleased(addHeart);
@@ -159,6 +162,8 @@ function setupButtons() {
     select("#plusKey").mouseReleased(addKey);
     select("#minusSpecialKey").mouseReleased(subtractSpecialKey);
     select("#plusSpecialKey").mouseReleased(addSpecialKey);
+    select("#minusXp").mouseReleased(subtractXp);
+    select("#plusXp").mouseReleased(addXp);
 
     select("#restart").mouseReleased(restart);
 }
@@ -197,6 +202,18 @@ function addSpecialKey() {
 
     specialKeyCount++;
     specialKeySpan.html(specialKeyCount);
+}
+
+function subtractXp() {
+
+    xpCount--;
+    xpSpan.html(xpCount);
+}
+
+function addXp() {
+
+    xpCount++;
+    xpSpan.html(xpCount);
 }
 
 function restart() {
