@@ -104,7 +104,7 @@ function draw() {
 
 function display() {
 
-    background("#0a0a0a");
+    background("#2A2F1F");
 
     for (let i = 0; i < gridSize; i++) {
         for (let j = 0; j < gridSize; j++) {
