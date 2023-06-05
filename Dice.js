@@ -11,6 +11,8 @@ class Dice {
 
         this.clicked = true;
         this.backgroundColour = "#ccc";
+
+        this.lockedSides = [];
     }
 
     display() {
@@ -105,8 +107,10 @@ class Dice {
             rect(0, -this.size*.95/4, this.size*.2, this.size*.95/1.95);
             rect(0, this.size*.95/4, this.size*.2, this.size*.95/1.95);
             rect(0, 0, this.size*.6, this.size*.6, 4);
+            this.lockedSides = [false, false, false, false];
         } else if (this.side == 5) {
             rect(0, 0, this.size*.6, this.size*.6, 4);
+            this.lockedSides = [true, true, true, true];
         }
 
         pop();

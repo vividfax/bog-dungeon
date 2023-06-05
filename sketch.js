@@ -30,6 +30,8 @@ let timeClicked = 0;
 let timePressed = 0;
 let isTouching;
 
+let player;
+
 function preload() {
 
     flagImage = loadImage("./images/flag.png");
@@ -118,6 +120,8 @@ function display() {
     for (let i = 0; i < markers.length; i++) {
         markers[i].display();
     }
+
+    player.display();
 }
 
 function mouseReleased() {
@@ -145,6 +149,13 @@ function mouseReleased() {
 
         if (!markerClicked) markers.push(new Marker(mouseX, mouseY));
     }
+
+    display();
+}
+
+function keyPressed() {
+
+    player.update();
 
     display();
 }
@@ -240,7 +251,12 @@ function restart() {
     for (let i = 0; i < gridSize; i++) {
         for (let j = 0; j < gridSize; j++) {
 
-            diceArr[i][j] = new Dice(i, j, types.pop());
+            let type = types.pop();
+            diceArr[i][j] = new Dice(i, j, type);
+
+            if (type == "🚩") {
+                player = new Player(i, j);
+            }
         }
     }
 
